@@ -1,0 +1,20 @@
+[project]
+name = "app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "bcrypt==4.3.0",
+    "fastapi[standard]>=0.128.0",
+    "langchain>=1.2.6",
+    "langchain-google-genai>=4.2.0",
+    "langchain-openai>=1.1.7",
+    "langchain-xai>=1.2.1",
+    "passlib[bcrypt]>=1.7.4",
+    "pydantic>=2.12.5",
+    "python-dotenv>=1.2.1",
+    "python-jose[cryptography]>=3.5.0",
+    "sqlalchemy>=2.0.45",
+    "uvicorn>=0.40.0",
+]

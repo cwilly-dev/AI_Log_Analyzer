@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "title": "Daily cleanup + benign kernel warning",
+    "expected_risk_level": "low",
+    "content": "2026-01-21 09:12:44 INFO  systemd[1]: Starting Daily Cleanup of Temporary Directories...\n2026-01-21 09:12:44 INFO  cleanup.sh: Temporary directory /tmp cleaned successfully\n2026-01-21 09:12:45 WARN  kernel: CPU frequency scaling governor not set, using default\n2026-01-21 09:12:46 INFO  systemd[1]: Finished Daily Cleanup of Temporary Directories.\n2026-01-21 09:12:47 INFO  healthcheck: All monitored services are running normally\n"
+  },
+  {
+    "id": "2",
+    "title": "DB pool exhaustion with recovery + latency warning",
+    "expected_risk_level": "medium",
+    "content": "2026-01-21 14:37:18 INFO  web-api: Incoming request GET /api/users\n2026-01-21 14:37:19 ERROR db.pool: Connection pool exhausted, retrying (attempt 1 of 3)\n2026-01-21 14:37:20 ERROR db.pool: Connection pool exhausted, retrying (attempt 2 of 3)\n2026-01-21 14:37:21 INFO  db.pool: Successfully acquired database connection after retry\n2026-01-21 14:37:22 WARN  web-api: Request latency exceeded threshold (2150ms)\n2026-01-21 14:37:22 INFO  web-api: Request completed with status 200\n"
+  },
+  {
+    "id": "3",
+    "title": "Brute force attempts + OOM kill + service crash",
+    "expected_risk_level": "high",
+    "content": "2026-01-21 22:04:11 WARN  auth-service: Failed login attempt for user admin from 185.73.44.19\n2026-01-21 22:04:13 WARN  auth-service: Failed login attempt for user admin from 185.73.44.19\n2026-01-21 22:04:15 WARN  auth-service: Failed login attempt for user admin from 185.73.44.19\n2026-01-21 22:04:16 ERROR auth-service: Too many failed login attempts, account temporarily locked\n2026-01-21 22:04:18 ERROR kernel: Out of memory: Kill process 2381 (auth-service) score 912 or sacrifice child\n2026-01-21 22:04:18 ERROR kernel: Killed process 2381 (auth-service), UID 1001, total-vm:2048576kB\n2026-01-21 22:04:19 CRITICAL systemd[1]: auth-service.service failed unexpectedly\n"
+  }
+]
